@@ -1,0 +1,50 @@
+186. Leetcode
+
+https://aaronice.gitbook.io/lintcode/string/reverse-words-in-a-string-ii
+
+Given an input string, reverse the string word by word.
+Example:
+Input:  
+["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
+
+Output: 
+["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
+
+Approach : Two-Pointer + Multi-reversal - O(n) time, O(1) space
+
+code 1 :
+class Solution {
+    public void reverseWords(char[] str) {
+        // reverse the whole input 
+        reverse(str, 0, str.length - 1);
+
+        // reverse each individual word
+        reverseEachWords(str);
+    }
+
+    void reverse(char[] str, int s, int t) {
+        while (s < t) {
+            char tmp = str[s];
+            str[s] = str[t];
+            str[t] = tmp;
+            s++;
+            t--;
+        }
+    }
+
+    void reverseEachWords(char[] str) {
+        int i = 0, j = 0; 
+        int n = str.length;
+        while (i < n && j < n) {
+            while (i < n && str[i] == ' ') {
+                i++;
+            }
+            j = i;
+            while (j < n && str[j] != ' ') {
+                j++;
+            }
+            reverse(str, i, j - 1);
+            i = j;
+        }
+    }
+}
