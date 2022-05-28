@@ -27,8 +27,8 @@ class Solution {
            }
            else
            {
-              arr[s2.charAt(i)-'a']++;
-              arr[s2.charAt(i-s1.length())-'a']--;
+              arr[s2.charAt(i)-'a']++;              ####
+              arr[s2.charAt(i-s1.length())-'a']--;    ########
               if(compare(arr,arr2))
                     return true;
            }
