@@ -1,0 +1,101 @@
+54. Spiral Matrix
+=================
+https://leetcode.com/problems/spiral-matrix/
+--------------------------------------------
+
+>>>>> my appraoch:
+
+public List<Integer> spiralOrder(int[][] matrix) {
+    ArrayList<Integer> res = new ArrayList<>();
+    int m = matrix.length;
+    int n = matrix[0].length;
+    int minc = 0,minr = 0;
+    int maxr = m-1,maxc =n-1;
+    int size = m*n,count = 1;
+    while(count <= size){
+        //top wall  row = minr,col = minc to maxc
+        for(int i = minr,j = minc; j<= maxc && count <= size; j++){
+            res.add(matrix[i][j]);
+            count++;
+        }
+        minr++;
+        
+        //right wall  row = minr to maxr,col =maxc
+        for(int i = minr,j=maxc; i<=maxr  && count <= size; i++){
+            res.add(matrix[i][j]);
+              count++;
+        }
+        maxc--;
+        
+        //bottam wall row = maxr, col = maxc to minc
+        
+        for(int i = maxr,j=maxc; j>=minc && count <= size; j--){
+            res.add(matrix[i][j]);
+              count++;
+        }
+        maxr--;
+        
+        //left wall row = maxr to min r;col minc
+        for(int i = maxr,j=minc; i>=minr && count <= size; i--){
+            res.add(matrix[i][j]);
+              count++;
+        }
+        minc++;
+    }
+    return res;
+}
+
+
+
+>>>>>> different than my approach : 
+------------------------------------------------------------------
+class Solution {
+    //TC - O(m*n)
+    //SC - O(m*n)
+    public List<Integer> spiralOrder(int[][] matrix) {
+        //Higher Bounds
+        int m = matrix.length, n = matrix[0].length;
+        //Right, Down, Left, Up
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        //initial indices
+        int i = 0, j = 0;
+        //set current direction Right
+        int[] curDir = directions[0];
+        //Lower Bounds
+        int initialM = 0, initialN = 0;
+        
+        List<Integer> result = new ArrayList<>();
+        
+        while(i >= 0 && i < m && j >= 0 && j < n && matrix[i][j] != -101) {
+            // System.out.println("i"+i+";j"+j);
+            result.add(matrix[i][j]);
+            //mark visited cells
+            matrix[i][j] = -101;
+            //If current topmost Row fully covered, change direction to Down
+            if(j == n - 1 && curDir[0] == directions[0][0] && curDir[1] == directions[0][1]) {
+                //set direction to Down
+                curDir = directions[1];
+                //increment LowerBound row pointer to say current row visited already
+                initialM++;
+            } else if(i == m - 1 && curDir[0] == directions[1][0] && curDir[1] == directions[1][1]) {
+                //If current Rightmost Col fully covered, change direction to Left
+                curDir = directions[2];
+                //decrement Higher Bound column pointer
+                n--;
+            } else if(j == initialN && curDir[0] == directions[2][0] && curDir[1] == directions[2][1]) {
+                //If current Bottommost Row fully covered, change direction to Up
+                curDir = directions[3];
+                //decrement Higher Bound row pointer
+                m--;
+            } else if(i == initialM && curDir[0] == directions[3][0] && curDir[1] == directions[3][1]) {
+                //If current leftmost col fully covered, change direction to Right
+                curDir = directions[0];
+                initialN++;
+            } 
+            //increment i and j
+            i += curDir[0];
+            j += curDir[1];
+        }
+        return result;
+    }
+}
