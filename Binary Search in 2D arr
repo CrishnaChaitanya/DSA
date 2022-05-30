@@ -1,0 +1,36 @@
+>> BINARY SEARCH IN 2D ARRAY
+>> accessing the array using the mid is the new learning.
+
+https://leetcode.com/problems/search-a-2d-matrix
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        
+        int start = 0;
+        int end = row*col-1;
+        int mid = start + (end-start)/2;
+        
+        while(start<=end){
+            
+            //the heart of binary search in 2D array.
+            int element = matrix[mid/col][mid%col];   //********************** V.IMP ********************
+            
+            if(element == targer){
+                return 1;
+            }
+            
+            if(element<target){
+                start = mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+            mid = start + (end-start)/2;
+        }
+        return 0;
+    }
+}
+
+>> O(log(row*col))
