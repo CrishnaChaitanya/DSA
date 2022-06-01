@@ -1,0 +1,19 @@
+This is a good question
+This has 3 approaches:
+  -Try to come up with as many solutions as you can. There are at least three different ways to solve this problem.
+  -Could you do it in-place with O(1) extra space?
+
+
+// Approach 1: This is easiest approach; we use the mod operator; O(n) TC and O(n) SC
+
+Note- Here i have copied 'nums' array into 'arr' becuz if u perform the operations on arr and copy the answer into nums array the address gets changed and leetcode wont accpt that.
+      So we copied the contents of nums and did the operations in nums array using the 'arr' to get the values.
+      
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++) arr[i] = nums[i];
+        for(int i=0;i<n;i++) nums[(i+k)%n]=arr[i];
+    }
+}
