@@ -1,0 +1,22 @@
+Leeticde 283
+https://leetcode.com/problems/move-zeroes/
+Asked in Facebook.
+
+
+
+>> 2 Pointer approach
+
+ class Solution {
+    public void moveZeroes(int[] nums) {
+        int j =0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                nums[j++]=nums[i];               //***************v.imp*********** taking advantage of the difference between 'i++' and '++i'
+            }
+        }
+        while(j<nums.length){
+            nums[j]=0;
+            j++;
+        }
+    }
+}
