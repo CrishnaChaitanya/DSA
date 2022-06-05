@@ -1,0 +1,64 @@
+ SUM OF TWO ARRAYS
+ CODESTUDIO LINK : https://www.codingninjas.com/codestudio/problems/sum-of-two-arrays_893186
+ solution video : https://www.youtube.com/watch?v=Z7_nMTHROZo&t=873s&ab_channel=CodeHelp-byBabbar
+
+THERE ARE 3 CASES TO THIS QUESTION
+----------------------------------
+CASE 1: WHEN 'ARR2' LENGTH IS SMALLER THAN 'ARR1'.
+CASE 2: WHEN 'ARR2' LENGTH IS GREATER THAN 'ARR1'.
+CASE 3: WHEN BOTH THE ARRAYS LENGTH IS THE SAME BUT IN THE LAST STEP WE HAVE TO INCLUDE 'CARRY' TO THE ANS.
+
+HOW TO CALC THE 'CARRY'?
+> CARRY = SUM / 10;
+> SUM = SUM % 10;
+> ARR[I] = SUM;
+
+int i = n-1; // i pointing at arr1 last index
+int j = m-1; // j pointing at arr2 last index
+
+//to store the ans
+ArrayList<Integer> ans = new ArrayList<>();
+
+int carry = 0;
+
+while(i>=0 && j>=0)
+{
+    int val1 = arr1[i];
+    int val2 = arr2[j];
+
+    int sum = val1 + val2 + carry;
+
+    carry = sum/10;
+    sum=sum%10;
+    ans.add(sum);
+    i--;  //to step a position back since we are traversing from the end
+    j--;  // " "  
+}
+
+//first case: when 'arr2' traversal is finished and 'arr1' is left
+while(i>=0){
+    int sum = arr[i] + carry;
+    carry = sum/10;
+    sum=sum%10;
+    ans.add(sum);
+    i--;  //to step a position back since we are traversing from the end 
+}
+
+//case 2 : when 'arr1' traversal is finished & 'arr2' is left
+while(j>=0){
+    int sum = b[j] + carry;
+    carry = sum/10;
+    sum = sum%10;
+    ans.add(sum);
+    j--;
+}
+
+//case 3: the carry is leftout
+while(carry != 0){
+    int sum = carry;
+    carry=sum/10;
+    sum=sum%10;
+    ans.add(sum);
+}
+
+Collections.reverse(ans); 
