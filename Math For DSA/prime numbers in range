@@ -1,0 +1,94 @@
+Approach 1:
+-we will test all divisors from 2 to n-1
+-We will skip 1 and n
+
+if (n <= 1){
+        return False
+        }
+for(int i=2;i<n;i++)
+{
+  if(n%i==0){
+    return false;
+    }
+   return true;
+   }
+   
+APPROACH 2:
+- In this method, we use a simple trick by reducing the number of divisors we check for.
+def is_prime(n):
+    if n <= 1:
+        return False
+ 
+    max_div = math.floor(math.sqrt(n))
+    for i in range(2, 1 + max_div):
+        if n % i == 0:
+            return False
+    return True
+ 
+ Method 3:
+ Now, we will optimize our code to next level which takes lesser time than the previous method. You might have noticed that in the last example, we iterated through every even number up to the limit which was a waste. The thing to notice is that all the even numbers except two can not be prime number. In this method, we kick out all the even numbers to optimize our code and will check only the odd divisors. 
+Following are the steps used in this method: 
+
+If the integer is less than equal to 1, it returns False.
+If the number is equal to 2, it will return True.
+If the number is greater than 2 and divisible by 2, then it will return False.
+Now, we have checked all the even numbers. Now, look for the odd numbers.
+If the given number is divisible by any of the numbers from 3 to the square root of the number skipping all the even numbers, the function will return False
+Else it will return True
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n > 2 and n % 2 == 0:
+        return False
+ 
+    max_div = math.floor(math.sqrt(n))
+    for i in range(3, 1 + max_div, 2):
+        if n % i == 0:
+            return False
+    return True
+ 
+ 
+----------Sieve Method: ------------
+class SieveOfEratosthenes 
+{ 
+    void sieveOfEratosthenes(int n) 
+    { 
+        // Create a boolean array "prime[0..n]" and initialize 
+        // all entries it as true. A value in prime[i] will 
+        // finally be false if i is Not a prime, else true. 
+        boolean prime[] = new boolean[n+1]; 
+        for(int i=0;i<n;i++) 
+            prime[i] = true; 
+          
+        for(int p = 2; p*p <=n; p++) 
+        { 
+            // If prime[p] is not changed, then it is a prime 
+            if(prime[p] == true) 
+            { 
+                // Update all multiples of p 
+                for(int i = p*p; i <= n; i += p) 
+                    prime[i] = false; 
+            } 
+        } 
+          
+        // Print all prime numbers 
+        for(int i = 2; i <= n; i++) 
+        { 
+            if(prime[i] == true) 
+                System.out.print(i + " "); 
+        } 
+    } 
+      
+    // Driver Program to test above function 
+    public static void main(String args[]) 
+    { 
+        int n = 30; 
+        System.out.print("Following are the prime numbers "); 
+        System.out.println("smaller than or equal to " + n); 
+        SieveOfEratosthenes g = new SieveOfEratosthenes(); 
+        g.sieveOfEratosthenes(n); 
+    } 
+} 
