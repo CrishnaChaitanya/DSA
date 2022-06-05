@@ -1,0 +1,32 @@
+>> Iterative : 
+int gcd(int a,int b){
+    if (a==0) {
+        return b;
+    }
+    if (b==0) {
+        return a;
+    }
+
+    while(a != b){
+        if (a>b) {
+            a=a-b;
+        }
+        else{ // if b>a
+            b=b-a;
+        }
+    }
+    return a;
+}
+---------------------------------------------------------------
+>> RECURSIVE :
+
+public static int gcd(int a, int b){
+    if (b==0) {
+        return a;
+    }
+    return gcd(b,a%b);
+}
+
+V.IMPORTANT FORMULA:
+>Relation b/w GCD and LCM
+> LCM x GCD = a x b
