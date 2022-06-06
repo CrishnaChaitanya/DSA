@@ -1,0 +1,19 @@
+public static void deleteMiddle(Stack<Integer> inputStack, int N){
+    int count=0;
+    solve(inputStack,count,N);
+}
+private static void solve(Stack<Integer> inputStack,int count,int n){
+    //base case
+    if (count==size/2) {
+        inputStack.pop();
+        return;
+    }
+
+    int num = inputStack.top();
+    inputStack.pop();
+
+    //recursive call
+    solve(inputStack, count+1, size);
+
+    inputStack.push(num);
+}
