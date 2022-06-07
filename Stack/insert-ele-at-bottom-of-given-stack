@@ -1,0 +1,19 @@
+public Stack<Integer> pushBottom(Stack<Integer> myStack){
+    solve(myStack, x);
+    return myStack;
+}
+private static void solve(Stack<Integer> s, int x)
+{
+    //base case
+    if(s.isEmpty()){
+        s.push(x);
+        return;
+    }
+
+    int num = s.top();
+    s.pop();
+
+    //recursive call
+    solve(stack,x);
+    s.push(num);
+}
