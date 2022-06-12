@@ -1,0 +1,22 @@
+public static ArrayList<Integer> nextSmallerElement(ArrayList<Integer> arr, int n){
+    
+    Stack<Integer> st = new Stack<>();
+    st.push(INTEGER.MIN_VALUE);  
+
+    ArrayList<Integer> ans = new ArrayList<>();
+
+    for(int i=n-1; i>=0; i--){
+        int current = arr[i];
+        while(st.peek() >= current)
+        {
+            st.pop();
+        }
+
+        //now that current>st.peek(); this means this st.peek() is the next smaller element to arr[i];
+        ans.add(s.peek());
+        
+        st.push(current);
+    }
+    return ans;
+
+}
