@@ -1,0 +1,23 @@
+> REVERSE A QUEUE
+- 2 APPROACHES : 
+    - USING A STACK
+    - USING RECURSION
+
+>> USING RECURSION
+
+static Queue<Integer> reverseQueue<Queue<Integer> q)
+{
+  if(q.isEmpty()) return q;
+  
+  // remove the first ele from the queue, and let recursion do the rest i.e reverse the remaining queue except the 1st element
+  int firstEle = q.peek();
+  q.remove();
+  
+  //reverse the remaining queue
+  q = reverseQueue(q);
+  
+  // Enqueue current item to rear
+  q.add(firstEle);
+  
+  return q;
+}
