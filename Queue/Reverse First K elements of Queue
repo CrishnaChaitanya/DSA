@@ -1,0 +1,29 @@
+public static Queue<Integer> modifyQueue(Queue<Integer> q, int k)
+{
+    // step1 : pop first k from Qeueu and put them into stack
+    Stack<Integer> st = new Stack<>();
+
+    for (int i=0; i<k; i++) {
+        int val = q.peek();
+        q.pop();
+        st.push(val);
+    }
+
+    // step2 : fetch from stack and push into queue
+    while(!st.isEmpty()){
+        int val = s.peek();
+        st.pop();
+        q.add(val);
+    }
+
+    //step3 : fetch first (n-k) elements from Queue and push into stack  and add then to queue; we are doing this to get the order straight
+    int t = q.size()-k;
+
+    while(t--)
+    {
+        int val = q.peek();
+        q.pop();
+        q.add(val);
+    }
+    return q;
+}
