@@ -1,0 +1,43 @@
+public static String firstNonRepeating(String A){
+    HashMap<Character, Integer> charCountMap = new HashMap<>();
+    Queue<Integer> q = new Queue<>();
+    String ans = "";
+
+    for (int i=0; i<A.length; i++) {
+        char c = A.charAt(i);
+
+        //increse the count of that char in the hashmap
+        if (charCountMap.containsKey(c)) {
+ 
+                // If char is present in charCountMap,
+                // incrementing it's count by 1
+                charCountMap.put(c, charCountMap.get(c) + 1);
+            }
+            else {
+ 
+                // If char is not present in charCountMap,
+                // putting this char to charCountMap with 1 as it's value
+                charCountMap.put(c, 1);
+            }
+
+            //queue mei push kardo
+            q.add(c);
+
+            while(!q.isEmpty()) {
+                if (charCountMap.get(q.peek()) > 1) {
+                    //repeating character
+                    q.pop();
+                }
+                else{
+                    //non repeating character milgaya
+                    ans.add(q.peek());
+                    break;
+                }
+            }
+
+            if (q.isEmpty()) {
+                ans+='#';
+            }
+            return ans;
+    }
+}
