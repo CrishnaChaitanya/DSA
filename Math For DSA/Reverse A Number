@@ -1,0 +1,21 @@
+public static int reverseANumber(){
+    int ans = 0;
+    while(n!=0){
+        int digit=n%10;
+
+        // new learning - this condition is very vital to put becuz not all testcases will pass without this.
+        // why this cond.? if the input 'n' is a v.big number then multiplying it with 10 i.e (ans*10) which 
+        // cannot be stored in Integer.
+        // So we are checking if the number is exceeding the int range; if so we are returnig 0.
+        // Integer.MAX_VALUE/10 becuz if we check the cond. for ans*10 > Integer.MAX_VALUE, then we are doing 
+        // the same mistake of multiplying the big number with 10 and it becomes out of range
+        
+        if (ans > Integer.MAX_VALUE/10 || ans < Integer.MIN_VALUE) {
+            return 0;
+        }
+
+        ans = (ans*10)+digit;
+        n=n/10;
+    }
+    return ans;
+}
