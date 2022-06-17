@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        // Approach 1 : keep dividing n by 2 until it becomes 1
+        
+        if(n==0) return false;
+        while(n != 1)
+        {
+            if(n%2!=0){
+                return false;
+            }
+            n = n/2;
+        }
+        return true;
+    }
+    
+    //Approach 2: 
+    if(n==0) return false;
+    return (ceil(log2(n)) == floor(log2(n)));
+}
