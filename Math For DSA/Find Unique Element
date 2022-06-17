@@ -1,0 +1,22 @@
+public class quick{
+	public static void main(String[] args) {
+		int[] arr = new int[]{1,2,1,3,2};
+		findUniqueElement(arr);
+	}
+
+	public static int findUniqueElement(int[] arr)
+	{
+		// we use the concept if XOR
+		// prop of xor is that we u xor a element with iteself then we get 0
+		// prop 2 of xor is that when we xor a ele with 0; then it gives the same ele.
+
+		//so in a array if we xor all the elements; then the elements which appear 2 times
+		// will cancel each other and leave us with the ele which has occured only once.
+		// i.e 0^0^0^3 = 3
+
+		int ans = 0;
+		for (int i=0; i<size; i++) {
+			ans = ans^arr[i];
+		}
+	}
+}
