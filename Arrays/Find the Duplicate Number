@@ -1,0 +1,26 @@
+3 APPRAOCHES TO SOLVE THIS QUESTION
+
+APPRAOCHE 1 : WE CAN SORT THE ARRAY AND ANY TWO INDICES I, I+1 VALUES WILL MATHC
+
+APPRAOCH 2 : CAN MAKE A FREQUENCY ARRAY AND SEE WHAT IS REPEATING.
+
+apprach 3 : using slow and fast pointer - v.imp
+
+class Solution{
+    public int findDuplicate(int[] nums)
+    {
+        int slow = nums[0];
+        int fast = nums[0];
+        do{
+            slow=nums[slow];
+            fast=nums[nums[fast]];
+        } while(slow!=fast);
+
+        fast = nums[0];
+        while(slow!=fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+}
