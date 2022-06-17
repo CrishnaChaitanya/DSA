@@ -1,0 +1,32 @@
+# for this question this was my code
+public boolean uniqueOccurrences(int[] arr) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int n:arr){
+            if(hm.containsKey(n)){
+               hm.put(n, hm.get(n) + 1);
+            }
+            else{
+                hm.put(n,1);
+            }
+        }
+        Set<Integer> set = new HashSet<>();
+        for(int val:hm.values())
+        {
+            if(set.add(val) == false) return false;
+        }
+        return true;
+        
+    }
+
+The above code can be reduced using some helpful hashmap methods and changing the comparision approach
+
+public boolean uniqueOccurrences(int[] arr)
+{
+    HashMap<Integer,Integer> num_occurrences = new HashMap();
+    for(int num : arr)
+    {
+        num_occurrences.put(num, num_occurrences.getOrDefault(num,0)+1);  //getOrDefault() - new learning.
+    }
+    HashSet<Integer> unique_vals = new HashSet(num_occurrences.values());
+    return num_occurrences.size() == unique_vals.size();
+}
