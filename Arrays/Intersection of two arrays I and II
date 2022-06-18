@@ -1,0 +1,65 @@
+Intersection of two arrays I
+----------------------------
+FOR THE INPUT Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+Solution: notice how we store the answers in the arraylist and then calc. its size to form a normal array As the return type is 'int[]'
+
+HashSet<Integer> set = new HashSet<>();
+        for(int i=0;i<nums1.length;i++){
+            set.add(nums1[i]);
+        }
+        ArrayList<Integer> li = new ArrayList<>();
+        for(int i:nums2){
+            if(set.contains(i)){
+                li.add(i);
+                set.remove(i);     // removing set memory space ?
+            }
+        }
+        int res[]= new int[li.size()];
+        for(int j=0;j<li.size();j++){
+            res[j]=li.get(j);
+        }
+        return res;
+        
+
+Problem 2 : Intersection of two arrays II - leetcode
+----------------------------------------------------
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+INTITAIL THOUGHT IS TO USE 'SET' DATA STRUCTURE. BUT WE IF WE SEE THE QUESTION PROPERLY. output mei 2 has come two times as it is prsent two times in nums1 and nums2
+Hence we cannot use HashSet as the output will be ans=[2] since it does not accept duplicates
+
+SO WE USE HASHMAP TO STORE THE COUNT.
+LINK - https://www.youtube.com/watch?v=XZ6ZL1Qg6og&ab_channel=CodewithAlisha
+
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> array1 = new HashMap<Integer, Integer>();
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        for(int n : nums1){
+            if(array1.containsKey(n))
+                array1.put(n, array1.get(n)+1);
+            else
+               array1.put(n,1);
+            
+        }
+        for(int n : nums2){
+            if(array1.containsKey(n)){
+                result.add(n);
+                if(array1.get(n)>1)
+                    array1.put(n,array1.get(n)-1);
+                else
+                    array1.remove(n);
+            } 
+        }
+        int finalArray[] = new int[result.size()];
+        int n = 0;
+        for(int i : result){
+            finalArray[n++] = i;
+        }
+        return finalArray;
+    }
+}
+
+
+
