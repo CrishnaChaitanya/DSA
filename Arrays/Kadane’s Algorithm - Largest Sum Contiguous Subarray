@@ -1,0 +1,25 @@
+Kadane’s Algorithm basically put is that when considering a se 
+import java.io.*;
+// Java program to print largest contiguous array sum
+import java.util.*;
+
+public int maxSubArray(int[] nums) {
+  int sum = 0;
+  int maxi = nums[0];
+  
+  for(int i=0;i<nums.length;i++) {
+    sum+=nums[i];
+    if(sum > maxi) maxi = sum;
+    if(sum < 0) sum = 0;
+   }
+   return maxi;
+   }
+  }
+    
+
+Note:
+The above algorithm only works if and only if at least one positive number should be present otherwise it does not work i.e if an Array contains all negative numbers it doesn’t work.
+
+
+THE CASE WHERE ALL THE ELEMENTS OF THE ARRAY ARE NEGETIVE IS TO BE SOLVED USING DYNAMIC PROGRAMMING...
+IDK HOW !!
