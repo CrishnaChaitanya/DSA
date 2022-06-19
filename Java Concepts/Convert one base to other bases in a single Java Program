@@ -1,0 +1,19 @@
+public class Demo{
+
+
+   public static String base_convert(String num, int source, int destination){
+      return Integer.toString(Integer.parseInt(num, source), destination);      //**************************************
+   }
+   
+   
+   public static void main(String[] args){
+      String my_num = "345";
+      int source = 8;
+      int destination = 2;
+      System.out.println("Converting the number from octal to binary: "+ base_convert (my_num, source, destination));
+      destination = 10;
+      System.out.println("Converting the number from octal to decimal : "+ base_convert (my_num, source, destination));
+      destination = 16;
+      System.out.println("Converting the number from octal to hexadecimal: "+ base_convert (my_num, source, destination));
+   }
+}
