@@ -1,0 +1,19 @@
+//What 
+//where
+//How
+import java.io.BufferReader;
+public class UserInput{
+	public static void main(String[] args) throws Exception{
+		System.out.println("Enter a number");
+
+		InputStreamReader is = new InputStreamReader(System.in); //where i.e from the keyboard
+		BufferReader br = new BufferReader(is);	
+		int n =Integer.parseInt( br.readLine() ); // br.readLine gives you a string; so in order to convert it into a 'int' we need to use Integer.parseInt()
+		System.out.println(n);
+
+		//can be reduced to
+		BufferReader br = new BufferReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		System.out.pritnln(n);
+	}
+}
