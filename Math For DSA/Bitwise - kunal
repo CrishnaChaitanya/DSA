@@ -1,0 +1,104 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        //Check number is even or odd
+//        System.out.println(isEvenOrOdd(7));
+        printKthBit(13,2);
+        getBit(13,3);
+        setBit(5,1);
+    }
+    //1Q
+    private static String isEvenOrOdd(int n)
+    {
+        if ((n & 1 ) == 1){
+            return "Odd";
+        }
+        return "Even";
+    }
+    //2Q
+    static void printKthBit(int n, int k)
+    {
+        System.out.println(
+                ((n & (1 << (k - 1))) >> (k - 1)));
+    }
+    //alternative
+    private static void getBit(int n , int k)
+    {
+        int mask = 1 << (k-1);
+        int ans = n & mask;
+        if (ans != 0){
+            System.out.println("The bit is 1");
+        }
+        else {
+            System.out.println("The Bit is 0");
+        }
+    }
+
+    private static void rightMostSetBit(int n)
+    {
+        int right_most_set_bit = n & -n;
+        System.out.println(Integer.toBinaryString(right_most_set_bit));
+    }
+    /*SET BIT
+    Q) SET TGE 2ND BIT (POSITION=1) OF A NUMBER N. (N=0101)
+    STEPS: 1) BIT MASK : 1<<I
+           2) OPERATION: OR*/
+
+    private static void setBit(int n, int pos)
+    {
+        int mask = 1 << pos;
+        int ans = mask | n ;
+        System.out.println("Ayo");
+        System.out.println(ans);
+        System.out.println(Integer.toBinaryString(ans));
+    }
+
+    /* CLEAR BIT
+    Q) CLEAR THE 3RD BIT (POSITION=2) OF A NUMBER N (N=0101)
+    STEPS: 1) BIT MASK: 1<<I
+           2) OPERATION: AND with NOT
+     */
+    private static void clearBit(int n, int pos)
+    {
+        int bitMask = 1<<pos;
+        int notBitMask = ~(bitMask);
+        int newNumber = notBitMask & n;
+        System.out.println(newNumber);
+    }
+/*  UPDATE BIT
+    UPDATE THE 2ND BIT (POSITION=1) OF A NUMBER N TO 1 (N=0101)
+
+    FOR 1 TO UPDATE TO 0 A.K.A CLEAR OPERATION:
+        STEPS: 1) BIT MASK: 1<<I
+               2) OPERATION: AND with NOT
+    FOR 0 TO UPDATE TO 1 A.K.A SET OPERATION:
+        STEPS: 1) BIT MASK: 1<<I
+               2) OPERATION: OR
+               */
+    private static void updateBit()
+    {
+        Scanner sc = new Scanner(System.in);
+        int oper = sc.nextInt();
+        // oper=1 -> set; oper=0 -> clear
+        int n = 5;
+        int pos = 1;
+
+        int bitMask = 1<<pos;
+        if(oper == 1) {
+            //set
+            int newNumber = bitMask | n;
+            System.out.println(newNumber);
+        } else {
+            //clear
+            int newBitMask = ~(bitMask);
+            int newNumber = newBitMask & n;
+            System.out.println(newNumber);
+        }
+
+    }
+}
