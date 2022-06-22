@@ -1,0 +1,32 @@
+#[1,2,3,4,5]
+'''def product_of_array_except_self(given_list):
+    result=[None]*len(given_list)
+    for i in range(len(given_list)):
+        temp = 1
+        for j in range(len(given_list)):
+            if given_list[j]==given_list[i]:
+                continue
+            else:
+                temp = temp * given_list[j]
+                result[i] = temp
+
+    for i in range(len(given_list)):
+        print(result[i])
+
+ans(given_list=[1,2,3,4])'''
+
+#SOLUTION 2->WE JUST TAKE THE PRODUCT OF THE WHOLE ARRAY AND STORE IN A VARABLE AND DIVIDE THE VARIABLE BY EACH INDEX VALUE WHEN WE VISIT IT
+#But one edge case might be if the array contains a zero 
+import numpy as np
+def ProductOfArrayExceptSelf(alist):
+    n = len(alist)
+    if n<1:
+        return None
+    productOfWholeArray = np.prod(alist)
+    result = [None]*n
+    for i in range(n):
+        result[i] = productOfWholeArray//alist[i]
+    
+    print(result)
+
+ProductOfArrayExceptSelf(alist=[1,2,3,4])
