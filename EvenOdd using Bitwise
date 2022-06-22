@@ -1,0 +1,4 @@
+
+//we can also use the bitwise operator to check for even and odd of a number->
+if (number & 1) == 0 then it is even;
+else it is odd
