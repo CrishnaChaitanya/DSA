@@ -1,0 +1,27 @@
+string can be created using
+1)string
+2)StringBuffer
+3)StringBuilder
+
+the diffrence b/w string and strinBuffer is that :
+*string is immutable whereas stringBuffer is mutable.
+e.g:->String name="krihsna";
+           name.concat("chaitanya")--->this will create a new object and then it'll add finally giving us KrishnaChaitanya
+
+********	but if we use StringBuffer*******
+StringBuffer name="krishna";
+name.append("chaitnaya");	//append():It is used to add text at the end of the exisistence text.
+--->this will not create a new object and will add "chaitanya" directly to Krishna
+
+
+when to use string biulder?
+we use string builder like in the case of notepad where the string
+frequently changes.
+
+Syntax;->4 constructors
+	Stringbiffer(){........}
+	StringBuffer(CharSequence seq){.....}
+	StringBuffer(String str){.........}
+	StringBuffer(int capacity){..........}
+
+ALL THE METHODS IN STRING BUFFER ARE SYNC.METHODS
