@@ -1,0 +1,21 @@
+https://youtu.be/Yyyi12oaK94
+
+OPTIMAL SOLUTION
+
+WE WILL USE A HASHMAP.
+WE CHECK FOR EVERY ELEMENT IN THE ARRAY - BY WHAT NUMBER DO WE ADD OR SUBSTRACT THE ARRAY ELEMENT IN ORDER TO GET 'X'
+
+code:
+class Solution{
+	public int[] twoSum(int[] nums,int target) {
+		//optimal solution
+		Map<Integer, Integer> complements = new HashMap<>();
+		for (int i=0; i<nums.length; i++) {
+			Integer complementIndex complements.get(nums[i]);
+			if (complementIndex != null) {
+				return new int[]{i,complementIndex};
+			}
+			complements.put(target-nums[i],1)
+		}
+	}
+}
